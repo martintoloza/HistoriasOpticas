@@ -1,0 +1,8 @@
+<hr />
+<%= form_tag do %>
+   <%= label_tag "codigo", "Buscar por codigo" %>
+   <%= text_field_tag "codigo", "" %>
+   <%= submit_tag "Buscar", {:type => "button", :id => "boton_buscar"} %>
+   <div id="respuesta"></div>
+<% end %>
+<%= javascript_include_tag "buscar_por_ciudad" %>
