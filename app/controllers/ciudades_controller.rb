@@ -4,7 +4,21 @@ class CiudadesController < ApplicationController
   # GET /ciudades
   # GET /ciudades.json
   def index
-    @ciudades = Ciudad.all
+    @filterrific = initialize_filterrific(
+      Ciudad,
+      params[:filterrific],
+      :select_options => {
+        sorted_by: Ciudad.options_for_sorted_by
+      }
+    ) or return
+    @ciudades = @filterrific.find.page(params[:page])
+    # @ciudades = Ciudad.all
+
+    # Respond to html for initial page load and to js for AJAX filter updates.
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   # GET /ciudades/1

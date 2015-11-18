@@ -1,13 +1,13 @@
 Rails.application.routes.draw do
   resources :ciudades
-  get 'ciudades/:codigo', to: 'ciudades#buscar_por_ciudad'
+  # get 'ciudades/:codigo', to: 'ciudades#buscar_por_ciudad'
   # get 'ciudades/buscar_por_ciudad'
   root :to => 'ciudades#index'
   # match 'ciudades/buscar_por_ciudad/:codigo' => 'ciudades#buscar_por_ciudad'
 
-   scope "(:locale)", locale: /es|en/ do
-      resources :ciudades
-   end
+  # scope "(:locale)", locale: /es|en/ do
+  #    resources :ciudades
+  # end
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
