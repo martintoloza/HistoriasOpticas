@@ -11,13 +11,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151023194620) do
+ActiveRecord::Schema.define(version: 20151125021841) do
 
   create_table "ciudades", force: :cascade do |t|
-    t.string "codigo", limit: 5
-    t.string "nombre", limit: 60
+    t.string  "codigo",          limit: 5
+    t.string  "nombre",          limit: 60
+    t.integer "departamento_id", limit: 4
   end
 
   add_index "ciudades", ["codigo"], name: "index_ciudades_on_codigo", unique: true, using: :btree
+  add_index "ciudades", ["departamento_id"], name: "index_ciudades_on_departamento_id", using: :btree
 
+  create_table "departamentos", force: :cascade do |t|
+    t.string "codigo", limit: 2
+    t.string "nombre", limit: 60
+  end
+
+  add_foreign_key "ciudades", "departamentos"
 end

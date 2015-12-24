@@ -8,7 +8,8 @@ class CiudadesController < ApplicationController
       Ciudad,
       params[:filterrific],
       :select_options => {
-        sorted_by: Ciudad.options_for_sorted_by
+        sorted_by: Ciudad.options_for_sorted_by,
+        with_departamento_id: Departamento.options_for_select
       }
     ) or return
     @ciudades = @filterrific.find.page(params[:page])
@@ -75,12 +76,6 @@ class CiudadesController < ApplicationController
     end
   end
 
-  def buscar_por_ciudad
-     ciudad = Ciudad.select("id, codigo, nombre").where(codigo: params[:codigo]);
-     #Devuelve un json como salida al navegador.
-     render :json => ciudad[0]
-  end
-
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_ciudad
@@ -89,6 +84,6 @@ class CiudadesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def ciudad_params
-      params.require(:ciudad).permit(:codigo, :nombre)
+      params.require(:ciudad).permit(:codigo, :nombre, :departamento_id)
     end
 end

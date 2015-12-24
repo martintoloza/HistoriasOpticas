@@ -1,1 +1,1 @@
-json.extract! @ciudad, :id, :codigo, :nombre, :created_at, :updated_at
+json.extract! @ciudad, :id, :codigo, :nombre, :departamento_id, :created_at, :updated_at

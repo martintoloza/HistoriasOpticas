@@ -1,4 +1,6 @@
 class Ciudad < ActiveRecord::Base
+  belongs_to :departamento
+  #has_many :students, :dependent => :nullify
   	#Validaciones de codigo
 	#validates :codigo, :presence => {:message => "Usted debe ingresar un codigo"}, :numericality => {:only_integer => true, :message => "El codigo debe ser numérica"}, :uniqueness => {:message => "Usted ha ingresado un codigo repetido"}
 		#Validaciones de nombre
@@ -8,12 +10,11 @@ class Ciudad < ActiveRecord::Base
               :available_filters => %w[
                 sorted_by
                 search_query
+                with_departamento_id
               ]
 
   # default for will_paginate
   self.per_page = 10
-
-  #has_many :students, :dependent => :nullify
 
   scope :search_query, lambda { |query|
     return nil  if query.blank?
@@ -48,16 +49,24 @@ class Ciudad < ActiveRecord::Base
       order("ciudades.codigo #{ direction }")
     when /^nombre_/
       order("LOWER(ciudades.nombre) #{ direction }")
+    when /^departamento_nombre_/
+      order("LOWER(departamentos.nombre) #{ direction }").includes(:departamento)
     else
       raise(ArgumentError, "Invalid sort option: #{ sort_option.inspect }")
     end
   }
+  scope :with_departamento_id, lambda { |departamento_ids|
+    where(:departamento_id => [*departamento_ids])
+  }
+  
+  delegate :nombre, :to => :departamento, :prefix => true
 
   def self.options_for_sorted_by
     [
       ['Nombre (a-z)', 'nombre_asc'],
       ['Nombre (z-a)', 'nombre_desc'],
-      ['Código ciudad', 'codigo_asc']
+      ['Código ciudad', 'codigo_asc'],
+      ['Departamento (a-z)', 'departamento_nombre_asc']
     ]
   end
 
