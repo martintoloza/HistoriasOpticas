@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :barrios
   resources :ciudades
   # resources :departamentos
   root :to => 'ciudades#index'

@@ -1,6 +1,7 @@
 class Ciudad < ActiveRecord::Base
   belongs_to :departamento
-  #has_many :students, :dependent => :nullify
+  has_many :barrios
+ #has_many :students, :dependent => :nullify
   	#Validaciones de codigo
 	#validates :codigo, :presence => {:message => "Usted debe ingresar un codigo"}, :numericality => {:only_integer => true, :message => "El codigo debe ser numérica"}, :uniqueness => {:message => "Usted ha ingresado un codigo repetido"}
 		#Validaciones de nombre
@@ -19,7 +20,7 @@ class Ciudad < ActiveRecord::Base
   scope :search_query, lambda { |query|
     return nil  if query.blank?
     # condición de consulta, analizar en cada palabra clave
-    terms = query.downcase.split(/\s+/)
+    terms = ('%' + query.downcase).split(/\s+/)
     # reemplazar "*" con "%" para las búsquedas de comodín,
     # añadir '%', eliminar duplicados '%'s
     terms = terms.map { |e|

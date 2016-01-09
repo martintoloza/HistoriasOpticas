@@ -11,7 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151125021841) do
+ActiveRecord::Schema.define(version: 20160104131546) do
+
+  create_table "barrios", force: :cascade do |t|
+    t.string  "nombre",    limit: 100
+    t.integer "ciudad_id", limit: 4
+  end
+
+  add_index "barrios", ["ciudad_id"], name: "index_barrios_on_ciudad_id", using: :btree
 
   create_table "ciudades", force: :cascade do |t|
     t.string  "codigo",          limit: 5
@@ -27,5 +34,6 @@ ActiveRecord::Schema.define(version: 20151125021841) do
     t.string "nombre", limit: 60
   end
 
+  add_foreign_key "barrios", "ciudades"
   add_foreign_key "ciudades", "departamentos"
 end

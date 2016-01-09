@@ -30,6 +30,8 @@ class CiudadesController < ApplicationController
   # GET /ciudades/new
   def new
     @ciudad = Ciudad.new
+    @deptos = Departamento.select("id, nombre").order("nombre")
+    #@tareas = Tarea.select("titulo, descripcion").where(:activo => true).order("titulo").limit(3);
   end
 
   # GET /ciudades/1/edit

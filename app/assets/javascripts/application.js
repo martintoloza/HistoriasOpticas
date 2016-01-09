@@ -10,8 +10,8 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-// require bootstrap-sprockets
 //= require jquery
+//= require bootstrap-sprockets
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree
@@ -20,3 +20,16 @@
 //= require bootstrap-datepicker/locales/bootstrap-datepicker.en-GB.js
 //= require filterrific/filterrific-jquery
 //= require chardinjs
+
+$(document).ajaxError(function(event,xhr,options,exc) {
+    
+    var errors = JSON.parse(xhr.responseText);
+    var er ="<ul>";
+    for(var i = 0; i < errors.length; i++){
+        var list = errors[i];
+        er += "<li>"+list+"</li>"
+    }
+    er+="</ul>"
+    $("#error_explanation").html(er);
+       
+});
