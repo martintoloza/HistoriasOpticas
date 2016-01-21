@@ -1,0 +1,15 @@
+%p#notice= notice
+
+%p
+  %b Codigo:
+  = @ciudad.codigo
+%p
+  %b Nombre:
+  = @ciudad.nombre
+%p
+  %b Departamento:
+  = @ciudad.departamento
+
+= link_to 'Edit', edit_ciudad_path(@ciudad)
+\|
+= link_to 'Back', ciudades_path

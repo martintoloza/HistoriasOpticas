@@ -3,6 +3,8 @@ source 'https://rubygems.org'
 
 gem 'jquery-rails'
 gem 'coffee-rails', '~> 4.1.0'
+# gem 'sqlite3', group: :development
+# gem mysql2', '~> 0.3.20', group: :production
 gem 'mysql2', '~> 0.3.20'
 # gem 'puma'
 gem 'rails', '4.2.4'
@@ -24,6 +26,7 @@ gem 'filterrific' #, path: '../filterrific'
 gem 'haml-rails'
 gem 'will_paginate'
 gem 'will_paginate-bootstrap'
+gem 'devise'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

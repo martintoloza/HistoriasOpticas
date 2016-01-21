@@ -1,0 +1,20 @@
+.well.well-small
+  .pull-left{ :'data-position' => 'bottom', :'data-intro' => 'Restablecer los ajustes del filtro a los valores predeterminados.' }
+    = link_to "Restablecer los filtros", reset_filterrific_url, :class => 'btn btn-default btn-sm'
+
+    = link_to "Nueva Ciudad", new_ciudad_path, remote: true, :class => "btn btn-primary"
+  .chardin_box{ :'data-position' => 'bottom', :'data-intro' => "Creacion de las Ciudades." }
+
+%table.table
+  %tr
+    %th Nombre
+    %th Codigo
+    %th Departamento
+  - ciudades.each do |ciudad|
+    %tr
+      %td= ciudad.nombre
+      %td= ciudad.codigo
+      %td= ciudad.departamento_nombre.capitalize
+
+.chardin_box{ :'data-position' => 'top', :'data-intro' => "Paginador de will_paginate funciona como se esperaba." }
+  = will_paginate ciudades, renderer: BootstrapPagination::Rails

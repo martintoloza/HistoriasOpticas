@@ -1,0 +1,20 @@
+= form_for @ciudad do |f|
+  - if @ciudad.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@ciudad.errors.count, "error")} prohibited this ciudad from being saved:"
+      %ul
+        - @ciudad.errors.full_messages.each do |msg|
+          %li= msg
+
+  .field
+    = f.label :codigo
+    = f.text_field :codigo
+  .field
+    = f.label :nombre
+    = f.text_field :nombre
+  .field
+    = f.label :departamento
+    = f.text_field :departamento
+        = f.text_field :departamento, :class => "form-control"
+  .actions
+    = f.submit 'Guardar'

@@ -1,0 +1,6 @@
+%tr{:id => "barrio_#{barrio.id}"}
+  %td= barrio.nombre
+  %td= barrio.ciudad.nombre
+  %td
+    = link_to 'Edit', edit_barrio_path(barrio), remote: true, :class => 'btn btn-sm btn-info'
+    = link_to 'Delete', barrio, remote: true, :method => :delete, data: {confirm: "Borrar barrio: #{barrio.nombre}"}, :class => 'btn btn-sm btn-danger'

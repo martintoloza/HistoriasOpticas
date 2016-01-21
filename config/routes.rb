@@ -1,8 +1,11 @@
 Rails.application.routes.draw do
+  devise_for :users
+  get 'principal/index'
+
   resources :barrios
   resources :ciudades
   # resources :departamentos
-  root :to => 'ciudades#index'
+  root :to => 'principal#index'
   # match 'ciudades/buscar_por_ciudad/:codigo' => 'ciudades#buscar_por_ciudad'
 
   # scope "(:locale)", locale: /es|en/ do

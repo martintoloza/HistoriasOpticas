@@ -1,0 +1,9 @@
+= form_for(barrio, remote: true, :html => { :role => "form" }) do |f|
+  #error_explanation.bg-danger.text-danger
+  .row
+    .col-sm-6
+      .form-group
+        = f.label :nombre, :class => "control-label"
+        = f.text_field :nombre, :class => "form-control"
+      .form-group
+        = f.submit  @barrio.new_record? ? "Crear barrio" : "Actualizar barrio", :class => "btn btn-primary"

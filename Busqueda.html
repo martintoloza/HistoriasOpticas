@@ -1,0 +1,27 @@
+En index.html
+<% form_tag customer_path, :method => 'get' do %>
+  <p>
+    <%= text_field_tag :search, params[:search] %>
+    <%= submit_tag "Search", :first_name => nil %>
+  </p>
+<% end %>
+
+En x_controller.rb
+def index
+  @projects = Project.search(params[:search])
+end
+
+En models/x.rb
+def self.search(search)
+  if search
+    find(:all, :conditions => ['name LIKE ?', "%#{search}%"])
+  else
+    find(:all)
+  end
+end
+
+<% if @posts.present? %>
+  <%= render @posts %>
+<% else %>
+  <p>There are no posts containing the term(s) <%= params[:search] %>.</p>
+<% end %>
