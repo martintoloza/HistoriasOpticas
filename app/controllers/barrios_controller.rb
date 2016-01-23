@@ -2,6 +2,13 @@ class BarriosController < ApplicationController
   before_action :set_barrio, only: [:show, :edit, :update, :destroy]
   #before_filter :authenticate_user! except: [ :index, :show ]
  
+  #def barriosof
+  #  @ciudad_id = params[:ciudad_id]
+  #  @ciudad = Ciudad.find(@ciudad_id)
+  #  @barrios = @ciudad.id
+  # (59) barriosof_path(@barrio.ciudad.id)
+  #end
+
   def index
     @filterrific = initialize_filterrific(
       Barrio,
@@ -12,6 +19,7 @@ class BarriosController < ApplicationController
   end
 
   def show
+    
   end
 
   def new

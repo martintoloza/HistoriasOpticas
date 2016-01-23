@@ -1,9 +1,13 @@
 Rails.application.routes.draw do
   devise_for :users
-  get 'principal/index'
 
   resources :barrios
-  resources :ciudades
+  resources :ciudades do
+    get 'search'
+  end
+  get 'principal/index'
+  #get 'barriosof/:ciudad_id' => 'barrios#barriosof', :as => "barriosof"
+ 
   # resources :departamentos
   root :to => 'principal#index'
   # match 'ciudades/buscar_por_ciudad/:codigo' => 'ciudades#buscar_por_ciudad'

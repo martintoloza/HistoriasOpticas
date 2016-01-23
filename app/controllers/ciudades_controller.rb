@@ -25,6 +25,7 @@ class CiudadesController < ApplicationController
   # GET /ciudades/1
   # GET /ciudades/1.json
   def show
+
   end
 
   # GET /ciudades/new
@@ -78,11 +79,19 @@ class CiudadesController < ApplicationController
     end
   end
 
+  def search
+    @ciudad = Ciudad.find_by!(codigo: params[:ciudad_id])
+    respond_to do |format|
+      format.json { render :json => @ciudad }
+    end 
+  end 
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_ciudad
       @ciudad = Ciudad.find(params[:id])
     end
+  
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def ciudad_params

@@ -1,9 +1,19 @@
-= form_for(barrio, remote: true, :html => { :role => "form" }) do |f|
+= form_for(@barrio, remote: true, :html => { :role => "form" }) do |f|
   #error_explanation.bg-danger.text-danger
   .row
     .col-sm-6
       .form-group
-        = f.label :nombre, :class => "control-label"
-        = f.text_field :nombre, :class => "form-control"
+        = f.label :codigo, :class => "control-label"
+        = text_field_tag 'ciudad_codigo',nil, :class => "form-control first_input", maxlength: 5
+   
       .form-group
-        = f.submit  @barrio.new_record? ? "Crear barrio" : "Actualizar barrio", :class => "btn btn-primary"
+        = f.label :ciudad, :class => "control-label"
+        = text_field_tag 'barrio_ciudad_nombre',nil, :class => "form-control", :disabled=>true
+        = f.hidden_field :ciudad_id, :class => "form-control"
+
+      .form-group
+        = f.label :nombre, :class => "control-label"
+        = f.text_field :nombre, :class => "form-control", :tabindex => -1
+
+      .form-group
+        = f.submit  @barrio.new_record? ? "Crear Barrio" : "Actualizar Barrio", :class => "btn btn-primary"
