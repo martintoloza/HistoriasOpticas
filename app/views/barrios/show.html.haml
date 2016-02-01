@@ -1,0 +1,12 @@
+%p#notice= notice
+
+%p
+  %b Nombre:
+  = @barrio.nombre
+%p
+  %b Ciudad:
+  = @barrio.ciudad.nombre
+
+= link_to 'Editar', edit_barrio_path(@barrio)
+\|
+= link_to 'Atras', barrios_path

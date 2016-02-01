@@ -8,8 +8,8 @@
   = @ciudad.nombre
 %p
   %b Departamento:
-  = @ciudad.departamento
+  = @ciudad.departamento_nombre.capitalize
 
-= link_to 'Edit', edit_ciudad_path(@ciudad)
+= link_to 'Editar', edit_ciudad_path(@ciudad)
 \|
-= link_to 'Back', ciudades_path
+= link_to 'Atras', ciudades_path

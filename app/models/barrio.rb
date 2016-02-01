@@ -43,7 +43,7 @@ class Barrio < ActiveRecord::Base
    when /^nombre_/
       order("LOWER(barrios.nombre) #{ direction }")
    else
-      raise(ArgumentError, "Invalid sort option: #{ sort_option.inspect }")
+      raise(ArgumentError, "Opción de clasificación válido: #{ sort_option.inspect }")
     end
   }
   scope :with_ciudad_id, lambda { |ciudad_ids|

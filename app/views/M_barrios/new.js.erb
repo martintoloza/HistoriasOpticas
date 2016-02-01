@@ -1,0 +1,34 @@
+// Add the dialog title
+$('#dialog h3').html("<i class='glyphicon glyphicon-plus'></i> Creando Nuevo barrio");
+ 
+// Render the new form
+$('.modal-body').html('<%= j render("form") %>');
+ 
+// Show the dynamic dialog
+$('#dialog').modal("show");
+ 
+// Set focus to the first element
+$('#dialog').on('shown.bs.modal', function () {
+	  $('.first_input').focus()
+  })
+
+$('#ciudad_codigo').blur(function() {
+  $.ajax({
+    type: 'GET',
+    url: '/ciudades/'+$(this).val()+'/search/',
+	success: function(data) {
+	  $('#barrio_ciudad_id').val(data.id);
+	  $('#barrio_ciudad_nombre').val(data.nombre);
+	  $('#barrio_nombre').focus();
+
+	},
+	error: function(data) {
+      $('#barrio_ciudad_id').val("");
+      $('#barrio_ciudad_nombre').val("");
+      $('input:text:first').focus();
+      alert("EL codigo existe")
+	},	    
+
+  });
+  return false;
+});

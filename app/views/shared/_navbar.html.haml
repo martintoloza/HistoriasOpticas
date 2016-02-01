@@ -1,0 +1,48 @@
+%nav.navbar.navbar-default{:role => "navidation", :style => "margin-bottom: 0px"}
+  .container-fluid
+    / Brand and toggle get grouped for better mobile display
+    .navbar-header
+      %button.navbar-toggle.collapsed{"aria-expanded" => "false", "data-target" => "#bs-example-navbar-collapse-1", "data-toggle" => "collapse", :type => "button"}
+        %span.sr-only Toggle navigation
+        %span.icon-bar
+        %span.icon-bar
+        %span.icon-bar
+      %a.navbar-brand{:href => "http://www.google.com.co", :target => "_blank"} Historias
+    / Collect the nav links, forms, and other content for toggling
+    #bs-example-navbar-collapse-1.collapse.navbar-collapse
+      %ul.nav.navbar-nav
+        %li
+          %a{:href => ciudades_path} Ciudades
+        %li
+          %a{:href => barrios_path} Barrios
+        %li
+          %a{:href => profesiones_path} Profesiones
+        %li.dropdown
+          %a.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}
+            Informes
+            %span.caret
+          %ul.dropdown-menu
+            %li
+              %a{:href => "#"} Action
+            %li
+              %a{:href => "#"} Another action
+            %li
+              %a{:href => "#"} Something else here
+            %li.divider{:role => "separator"}
+            %li
+              %a{:href => "#"} Separated link
+            %li.divider{:role => "separator"}
+            %li
+              %a{:href => "#"} One more separated link
+            %span.sr-only (current)
+      %ul.nav.navbar-nav.navbar-right
+        - if current_user.nil?
+          %li
+            %a{:href => new_user_session_path} Ingreso
+          %li
+            %a{:href => new_user_registration_path} Registro
+        - else
+          %li
+            %a{"data-method" => "DELETE", :href => destroy_user_session_path} Salir
+    / /.navbar-collapse
+  / /.container-fluid

@@ -11,34 +11,40 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160121215939) do
+ActiveRecord::Schema.define(version: 20160131223116) do
 
   create_table "barrios", force: :cascade do |t|
-    t.string  "nombre",    limit: 100
-    t.integer "ciudad_id", limit: 4
+    t.string   "nombre",     limit: 100
+    t.integer  "ciudad_id",  limit: 4
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   add_index "barrios", ["ciudad_id"], name: "index_barrios_on_ciudad_id", using: :btree
 
-  create_table "ciudad_barrios", primary_key: "cityb_id", force: :cascade do |t|
-    t.string "codigo", limit: 5
-    t.string "nombre", limit: 200
-  end
-
-  add_index "ciudad_barrios", ["nombre"], name: "name", type: :fulltext
-
   create_table "ciudades", force: :cascade do |t|
-    t.string  "codigo",          limit: 5
-    t.string  "nombre",          limit: 60
-    t.integer "departamento_id", limit: 4
+    t.string   "codigo",          limit: 5
+    t.string   "nombre",          limit: 60
+    t.integer  "departamento_id", limit: 4
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   add_index "ciudades", ["codigo"], name: "index_ciudades_on_codigo", unique: true, using: :btree
   add_index "ciudades", ["departamento_id"], name: "index_ciudades_on_departamento_id", using: :btree
 
   create_table "departamentos", force: :cascade do |t|
-    t.string "codigo", limit: 2
-    t.string "nombre", limit: 60
+    t.string   "codigo",     limit: 2
+    t.string   "nombre",     limit: 60
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "profesiones", force: :cascade do |t|
+    t.string   "codigo",     limit: 5
+    t.string   "nombre",     limit: 100
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
   end
 
   create_table "users", force: :cascade do |t|

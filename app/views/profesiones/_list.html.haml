@@ -1,0 +1,13 @@
+%table.table.table-bordered.table-striped
+  %tr
+    %th Nombre
+    %th Codigo
+    %th
+  - profesiones.each do |profesion|
+    %tr
+      %td= profesion.nombre
+      %td= profesion.codigo
+      %td= link_to "Editar", edit_profesion_path(profesion), :class => "btn btn-primary"
+
+.chardin_box{ :'data-position' => 'top', :'data-intro' => "Paginador de will_paginate funciona como se esperaba." }
+  = will_paginate profesiones, renderer: BootstrapPagination::Rails

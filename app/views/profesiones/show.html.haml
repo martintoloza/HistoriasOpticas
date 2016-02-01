@@ -1,0 +1,12 @@
+%p#notice= notice
+
+%p
+  %b Codigo:
+  = @profesion.codigo
+%p
+  %b Nombre:
+  = @profesion.nombre
+
+= link_to 'Editar', edit_profesion_path(@profesion)
+\|
+= link_to 'Atras', profesiones_path

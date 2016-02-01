@@ -16,4 +16,5 @@
 # end
 ActiveSupport::Inflector.inflections do |inflect|
   inflect.irregular 'ciudad', 'ciudades'
+  inflect.irregular 'profesion', 'profesiones'
 end

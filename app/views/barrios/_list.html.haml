@@ -1,0 +1,11 @@
+%table.table.table-bordered.table-striped
+  %tr
+    %th Nombre
+    %th
+  - barrios.each do |barrio|
+    %tr
+      %td= barrio.nombre
+      %td= link_to "Editar", edit_barrio_path(barrio), :class => "btn btn-primary"
+
+.chardin_box{ :'data-position' => 'top', :'data-intro' => "Paginador de will_paginate funciona como se esperaba." }
+  = will_paginate barrios, renderer: BootstrapPagination::Rails

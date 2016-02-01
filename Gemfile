@@ -1,6 +1,5 @@
 source 'https://rubygems.org'
 
-
 gem 'jquery-rails'
 gem 'coffee-rails', '~> 4.1.0'
 # gem 'sqlite3', group: :development
@@ -49,4 +48,3 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
 end
-

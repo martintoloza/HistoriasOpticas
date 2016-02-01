@@ -1,0 +1,14 @@
+.container
+  %h2 Barrios
+  .well
+    = link_to "Nuevo Barrio", new_barrio_path, remote: true, class: "btn btn-primary"
+  .new-barrio
+  %table.table.table-bordered.table-striped{:id => ""}
+    %thead
+      %tr
+        %th Nombre
+        %th Ciudad
+        %th
+    %tbody#barrios
+      = render @barrios
+  = render 'shared/dialog'

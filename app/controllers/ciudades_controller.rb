@@ -4,7 +4,7 @@ class CiudadesController < ApplicationController
   # GET /ciudades
   # GET /ciudades.json
   def index
-    @filterrific = initialize_filterrific(
+    @fciudad = initialize_filterrific(
       Ciudad,
       params[:filterrific],
       :select_options => {
@@ -12,7 +12,7 @@ class CiudadesController < ApplicationController
         with_departamento_id: Departamento.options_for_select
       }
     ) or return
-    @ciudades = @filterrific.find.page(params[:page])
+    @ciudades = @fciudad.find.page(params[:page])
     # @ciudades = Ciudad.all
 
     # Respond to html for initial page load and to js for AJAX filter updates.
@@ -25,7 +25,6 @@ class CiudadesController < ApplicationController
   # GET /ciudades/1
   # GET /ciudades/1.json
   def show
-
   end
 
   # GET /ciudades/new
@@ -46,7 +45,7 @@ class CiudadesController < ApplicationController
 
     respond_to do |format|
       if @ciudad.save
-        format.html { redirect_to @ciudad, notice: 'Ciudad was successfully created.' }
+        format.html { redirect_to @ciudad, notice: 'Ciudad fue creada con éxito.' }
         format.json { render :show, status: :created, location: @ciudad }
       else
         format.html { render :new }
@@ -60,7 +59,7 @@ class CiudadesController < ApplicationController
   def update
     respond_to do |format|
       if @ciudad.update(ciudad_params)
-        format.html { redirect_to @ciudad, notice: 'Ciudad was successfully updated.' }
+        format.html { redirect_to @ciudad, notice: 'Ciudad fue actualizado correctamente.' }
         format.json { render :show, status: :ok, location: @ciudad }
       else
         format.html { render :edit }
@@ -74,7 +73,7 @@ class CiudadesController < ApplicationController
   def destroy
     @ciudad.destroy
     respond_to do |format|
-      format.html { redirect_to ciudades_url, notice: 'Ciudad was successfully destroyed.' }
+      format.html { redirect_to ciudades_url, notice: 'Ciudad fue borrada con éxito.' }
       format.json { head :no_content }
     end
   end
@@ -92,7 +91,6 @@ class CiudadesController < ApplicationController
       @ciudad = Ciudad.find(params[:id])
     end
   
-
     # Never trust parameters from the scary internet, only allow the white list through.
     def ciudad_params
       params.require(:ciudad).permit(:codigo, :nombre, :departamento_id)
