@@ -1,0 +1,31 @@
+.page-header{ :style => 'margin-bottom: 0px;' }
+  .pull-right
+    = link_to 'Atras', root_path, :style => 'display: inline-block; margin-top: 25px;'
+  %h1 Personas
+
+.well
+  = form_for_filterrific @fpersona do |f|
+    .row
+      .col-md-3
+        .form-group.chardin_box{ :'data-position' => 'top', :'data-intro' => 'Buscar por Apellidos, Nombres' }
+          %label Busqueda
+          = f.text_field :search_query,
+                         class: 'filterrific-periodically-observed form-control',
+                         placeholder: 'Busqueda'
+      .col-md-4
+        .form-group.chardin_box{ :'data-position' => 'top', :'data-intro' => 'Cambie el orden.' }
+          %label Ordenado por
+          = f.select :sorted_by,
+                     @fpersona.select_options[:sorted_by],
+                     {},
+                     { :class => 'form-control' }
+
+#results
+  = render :partial => 'personas/list',
+           :locals => { :personas => @personas }
+
+:javascript
+  $('#overlayTrigger').click(function(event) {
+    event.preventDefault();
+    $('body').chardinJs('start');
+  });

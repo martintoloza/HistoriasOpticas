@@ -59,7 +59,7 @@ class CiudadesController < ApplicationController
   def update
     respond_to do |format|
       if @ciudad.update(ciudad_params)
-        format.html { redirect_to @ciudad, notice: 'Ciudad fue actualizado correctamente.' }
+        format.html { redirect_to @ciudad, notice: 'Ciudad fue actualizada correctamente.' }
         format.json { render :show, status: :ok, location: @ciudad }
       else
         format.html { render :edit }

@@ -1,0 +1,62 @@
+= form_for @persona do |f|
+  #error_explanation.bg-danger.text-danger
+  .row
+    .col-sm-offset-2
+      .form-group
+        = f.label 'Tipo Doc.'
+        = f.select :tipoiden, options_for_select([["Cedula","CC"],["Ced.Extranjeria","CE"],["Pasaporte","PA"],["R.Civil","RC"],["Tarj.Identidad","TI"],["Adulto sin ID","AS"],["Menor sin ID","MS"],["Nro.Unico ID","NU"]])
+        = f.label 'Doc.Identidad', :class => "control-label"
+        = f.text_field :nroiden, :class => "form-control first_input", size: 15
+      .form-group
+        = f.label 'Primer Apellido'
+        = f.text_field :pri_ape, :class => "form-control", :tabindex => -1
+      .form-group
+        = f.label 'Segundo Apellido'
+        = f.text_field :seg_ape
+      .form-group
+        = f.label 'Primer Nombre'
+        = f.text_field :pri_nom
+      .form-group
+        = f.label 'Segundo Nombre'
+        = f.text_field :seg_nom
+      .form-group
+        = f.label :sexo
+        = f.select :sexo, options_for_select([["Masculino","M"],["Femenino","F"]])
+      .form-group
+        = f.label 'Und.Medida Edad'
+        = f.select :uniedad, options_for_select([["Años","1"],["Meses","2"],["Dias","3"]])
+      .form-group
+        = f.label :edad
+        = f.number_field :edad
+      .form-group
+        = f.label 'Zona Residencia'
+        = f.select :zonaresi, options_for_select([["Urbano","U"],["Rural","R"]])
+      .form-group
+        = f.label :direccion
+        = f.text_field :direccion
+      .form-group
+        = f.label :email
+        = f.email_field :email
+      .form-group
+        = f.label 'Tipo usuario'
+        = f.select :tipousua, options_for_select([["Contributivo","1"],["Subsidiado","2"],["Vinculado","3"],["Particular","4"],["Otro","5"]])
+      .form-group
+        = f.label 'Tipo Afiliado'
+        = f.select :tipoafili, options_for_select([["Cotizante","C"],["Beneficiario","B"],["Adicional","A"]])
+      .form-group
+        = f.label 'Estado civil'
+        = f.select :est_civil, options_for_select([["Soltero","S"],["Casado","C"],["Viudo","V"],["Divorsiado","D"],["Otros","O"]])
+      .form-group
+        = f.label :estado
+        = f.select :estado, options_for_select([["Activo",1],["Inactivo",2]])
+      .form-group
+        = f.label :ciudad
+        = f.hidden_field :ciudad
+      .form-group
+        = f.label :barrio
+        = f.hidden_field :barrio
+      .form-group
+        = f.label :profesion
+        = f.hidden_field :profesion
+      .form-group
+        = f.submit @persona.new_record? ? "Crear persona." : "Actualizar persona.", :class => "btn btn-primary"

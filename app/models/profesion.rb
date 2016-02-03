@@ -1,5 +1,5 @@
 class Profesion < ActiveRecord::Base
-  # belongs_to :ciudad
+  has_many :personas
 	validates :nombre, :presence => {:message => "Usted debe ingresar un nombre"}, length: {minimum: 5, maximum: 100, :message => "El nombre debe tener entre 5 y 100 caracteres"}
 
   filterrific :default_filter_params => { :sorted_by => 'nombre_asc' },

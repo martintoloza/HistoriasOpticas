@@ -1,0 +1,22 @@
+.well.well-small
+  .pull-left{ :'data-position' => 'bottom', :'data-intro' => 'Restablecer los ajustes del filtro a los valores predeterminados.' }
+    = link_to "Restablecer los filtros", reset_filterrific_url, :class => 'btn btn-default btn-sm'
+
+  .chardin_box{ :'data-position' => 'bottom', :'data-intro' => "Creacion de las Personas." }
+    = link_to "Nueva Persona", new_persona_path, :class => "btn btn-primary"
+
+%table.table.table-bordered.table-striped
+  %tr
+    %th Doc.Identidad
+    %th Apellidos
+    %th Nombres
+    %th
+  - personas.each do |persona|
+    %tr
+      %td= persona.nroiden
+      %td= persona.apellidos
+      %td= persona.nombres
+      %td= link_to "Editar", edit_persona_path(persona), :class => "btn btn-primary"
+
+.chardin_box{ :'data-position' => 'top', :'data-intro' => "Paginador de will_paginate funciona como se esperaba." }
+  = will_paginate personas, renderer: BootstrapPagination::Rails

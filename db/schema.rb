@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160131223116) do
+ActiveRecord::Schema.define(version: 20160202213838) do
 
   create_table "barrios", force: :cascade do |t|
     t.string   "nombre",     limit: 100
@@ -39,6 +39,35 @@ ActiveRecord::Schema.define(version: 20160131223116) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "personas", force: :cascade do |t|
+    t.string   "tipoiden",     limit: 2,  default: "CC"
+    t.string   "nroiden",      limit: 15
+    t.string   "pri_ape",      limit: 20
+    t.string   "seg_ape",      limit: 20
+    t.string   "pri_nom",      limit: 20
+    t.string   "seg_nom",      limit: 20
+    t.string   "sexo",         limit: 1,  default: "M"
+    t.date     "fechanac"
+    t.string   "uniedad",      limit: 1,  default: "1"
+    t.integer  "edad",         limit: 3
+    t.string   "zonaresi",     limit: 1,  default: "U"
+    t.string   "direccion",    limit: 60
+    t.string   "email",        limit: 60
+    t.string   "tipousua",     limit: 1,  default: "5"
+    t.string   "tipoafili",    limit: 1,  default: "C"
+    t.string   "est_civil",    limit: 1,  default: "S"
+    t.integer  "estado",       limit: 1,  default: 1,    null: false
+    t.integer  "ciudad_id",    limit: 4
+    t.integer  "barrio_id",    limit: 4
+    t.integer  "profesion_id", limit: 4
+    t.datetime "created_at",                             null: false
+    t.datetime "updated_at",                             null: false
+  end
+
+  add_index "personas", ["barrio_id"], name: "index_personas_on_barrio_id", using: :btree
+  add_index "personas", ["ciudad_id"], name: "index_personas_on_ciudad_id", using: :btree
+  add_index "personas", ["profesion_id"], name: "index_personas_on_profesion_id", using: :btree
 
   create_table "profesiones", force: :cascade do |t|
     t.string   "codigo",     limit: 5
@@ -69,4 +98,7 @@ ActiveRecord::Schema.define(version: 20160131223116) do
 
   add_foreign_key "barrios", "ciudades"
   add_foreign_key "ciudades", "departamentos"
+  add_foreign_key "personas", "barrios"
+  add_foreign_key "personas", "ciudades"
+  add_foreign_key "personas", "profesiones"
 end

@@ -1,7 +1,8 @@
 class Ciudad < ActiveRecord::Base
   belongs_to :departamento
   has_many :barrios
- #has_many :students, :dependent => :nullify
+  has_many :personas
+ #has_many :personas, :dependent => :nullify
 	validates :codigo, :presence => {:message => "Usted debe ingresar un codigo"}, :numericality => {:only_integer => true, :message => "El codigo debe ser numérico"}, :uniqueness => {:message => "Usted ha ingresado un codigo repetido"}
 	validates :nombre, :presence => {:message => "Usted debe ingresar un nombre"}, length: {minimum: 2, maximum: 60, :message => "El nombre debe tener entre 2 y 60 caracteres"}
 

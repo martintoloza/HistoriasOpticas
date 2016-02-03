@@ -1,0 +1,66 @@
+%p#notice= notice
+
+%p
+  %b Tipoiden:
+  = @persona.tipoiden
+%p
+  %b Nroiden:
+  = @persona.nroiden
+%p
+  %b Pri ape:
+  = @persona.pri_ape
+%p
+  %b Seg ape:
+  = @persona.seg_ape
+%p
+  %b Pri nom:
+  = @persona.pri_nom
+%p
+  %b Seg nom:
+  = @persona.seg_nom
+%p
+  %b Sexo:
+  = @persona.sexo
+%p
+  %b Fechanac:
+  = @persona.fechanac
+%p
+  %b Uniedad:
+  = @persona.uniedad
+%p
+  %b Edad:
+  = @persona.edad
+%p
+  %b Zonaresi:
+  = @persona.zonaresi
+%p
+  %b Direccion:
+  = @persona.direccion
+%p
+  %b Email:
+  = @persona.email
+%p
+  %b Tipousua:
+  = @persona.tipousua
+%p
+  %b Tipoafili:
+  = @persona.tipoafili
+%p
+  %b Est civil:
+  = @persona.est_civil
+%p
+  %b Estado:
+  = @persona.estado
+%p
+  %b Ciudad:
+  = @persona.ciudad
+%p
+  %b Barrio:
+  = @persona.barrio
+%p
+  %b Profesion:
+  = @persona.profesion
+
+= link_to 'Edit', edit_persona_path(@persona)
+\|
+= link_to 'Back', personas_path
